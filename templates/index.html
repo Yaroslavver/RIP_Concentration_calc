@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Растворы</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-btn">🏠 Домой</a>
+    </header>
+
+    <div class="search-cart">
+        <form action="/" method="GET" class="search-form">
+            <input type="text" name="search" placeholder="Поиск по названию..." value="{{ .Search }}" class="search-input">
+            <button type="submit" class="search-btn">Найти</button>
+        </form>
+        <a href="/calculation/{{ .CalcID }}" class="cart-icon">
+            🛒 <span class="cart-count">{{ .CartCount }}</span>
+        </a>
+    </div>
+
+    <div class="container">
+        <!-- Список растворов -->
+        <div class="cards-grid">
+            {{ range .Electrolytes }}
+            <a href="/electrolyte/{{ .ID }}" class="card">
+                <img src="{{ .Image }}" alt="{{ .Name }}">
+                <div class="card-body">
+                    <h3>{{ .Name }}</h3>
+                    <p>Концентрация: {{ .Concentration }} М</p>
+                    <p class="ions">Ионы: {{ .Ions }}</p>
+                    <!-- pH пока не выводим, но можно добавить -->
+                </div>
+            </a>
+            {{ else }}
+            <p>Ничего не найдено</p>
+            {{ end }}
+        </div>
+    </div>
+</body>
+</html>

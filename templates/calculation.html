@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Расчёт смеси №{{ .Calculation.ID }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-btn">🏠 Домой</a>
+    </header>
+
+    <div class="container">
+        <!-- Карточка с информацией о расчёте -->
+        <div class="calc-info">
+            <h2>Расчёт смеси №{{ .Calculation.ID }}</h2>
+            <p><strong>Концентрация в растворе:</strong> {{ .Calculation.Result }}</p>
+            <p><strong>Дата:</strong> {{ .Calculation.Date }}</p>
+            <p><strong>Описание:</strong> {{ .Calculation.Description }}</p>
+        </div>
+
+        <!-- Заголовки (отдельная карточка) -->
+        <div class="calc-head">
+            <span> </span> <!-- для картинки -->
+            <span>Раствор</span>
+            <span>Концентрация (М)</span>
+            <span>Ионы</span>
+            <span>Объём (мл)</span>            
+        </div>
+
+        <!-- Карточки выбранных растворов -->
+        {{ range .Items }}
+        <div class="calc-card">
+            <img src="{{ .Image }}" alt="{{ .Name }}" class="item-icon">
+            <span>{{ .Name }}</span>
+            <span>{{ .Concentration }}</span>
+            <span>{{ .Ions }}</span>
+            <span><input type="number" class="m-field" value="{{ .Volume }}" readonly></span>
+            
+        </div>
+        {{ end }}
+    </div>
+</body>
+</html>

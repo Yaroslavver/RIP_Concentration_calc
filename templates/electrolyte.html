@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Name }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-btn">🏠 Домой</a>
+    </header>
+
+    <div class="vibe-container">
+        <div class="vibe-video-wrapper">
+            <video autoplay loop muted playsinline class="vibe-video">
+                <source src="{{ .Video }}" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            <div class="vibe-overlay"></div>
+        </div>
+
+        <div class="vibe-content">
+            <h1 class="vibe-title">{{ .Name }}</h1>
+            <div class="vibe-details">
+                <div class="vibe-card">
+                    <span class="vibe-label">Концентрация</span>
+                    <span class="vibe-value">{{ .Concentration }} моль/л</span>
+                </div>
+                <div class="vibe-card">
+                    <span class="vibe-label">pH</span>
+                    <span class="vibe-value">≈ {{ .PH }}</span>
+                </div>
+                <div class="vibe-card">
+                    <span class="vibe-label">Ионы</span>
+                    <span class="vibe-value">{{ .Ions }}</span>
+                </div>
+            </div>
+            <div class="vibe-description">
+                <p><strong>Описание:</strong> {{ .Description }}</p>
+                <p><strong>Формула диссоциации:</strong> {{ .Name }} → {{ .Ions }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
