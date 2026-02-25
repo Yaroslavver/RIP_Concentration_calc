@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Растворы</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-btn">🏠 Домой</a>
+    </header>
+
+    <div class="search-cart">
+        <form action="/" method="GET" class="search-form">
+            <input type="text" name="search" placeholder="Поиск по названию..." value="{{ .search }}" class="search-input">
+            <button type="submit" class="search-btn">Найти</button>
+        </form>
+        {{ if gt .cart_count 0 }}
+        <a href="/calculation/{{ .draft_id }}" class="cart-icon">
+            🛒 <span class="cart-count">{{ .cart_count }}</span>
+        </a>
+        {{ else }}
+        <span class="cart-icon inactive">🛒</span>
+        {{ end }}
+    </div>
+
+    <div class="container">
+        <div class="cards-grid">
+            {{ range .electrolytes }}
+            <div class="card">
+                <a href="/electrolyte/{{ .ID }}">
+                    <img src="{{ .Image }}" alt="{{ .Name }}">
+                </a>
+                <div class="card-body">
+                    <h3><a href="/electrolyte/{{ .ID }}">{{ .Name }}</a></h3>
+                    <p>Концентрация: {{ .Concentration }} М</p>
+                    <p class="ions">Ионы: {{ .Ions }}</p>
+                    <!-- Форма добавления в заявку -->
+                    <form action="/add-to-calculation" method="POST" class="add-form">
+                        <input type="hidden" name="electrolyte_id" value="{{ .ID }}">
+                        <input type="number" name="volume" placeholder="Объём (мл)" required min="1">
+                        <button type="submit" class="btn">Добавить</button>
+                    </form>
+                </div>
+            </div>
+            {{ else }}
+            <p>Ничего не найдено</p>
+            {{ end }}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Расчёт смеси №{{ .calculation.ID }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-btn">🏠 Домой</a>
+    </header>
+
+    <div class="container">
+        <!-- Карточка с информацией о расчёте -->
+        <div class="calc-info">
+            <h2>Расчёт смеси №{{ .calculation.ID }}</h2>
+            <p><strong>Концентрация в растворе:</strong> {{ .calculation.Result }}</p>
+            <p><strong>Дата создания:</strong> {{ .calculation.CreatedAt.Format "02.01.2006 15:04" }}</p>
+            <p><strong>Статус:</strong> {{ .calculation.Status }}</p>
+            <!--<p><strong>Описание:</strong> {{ .Calculation.Description }}</p>-->
+            <form action="/delete-calculation" method="POST" onsubmit="return confirm('Удалить заявку?');">
+                <input type="hidden" name="calculation_id" value="{{ .calculation.ID }}">
+                <button type="submit" class="btn delete-btn">Удалить заявку</button>
+            </form>
+        </div>
+
+        <!-- Заголовки (отдельная карточка) -->
+        <div class="calc-head">
+            <span> </span> <!-- для картинки -->
+            <span>Раствор</span>
+            <span>Концентрация (М)</span>
+            <span>Ионы</span>
+            <span>Объём (мл)</span>            
+        </div>
+
+        <!-- Карточки выбранных растворов -->
+        {{ range .items }}
+        <div class="calc-card">
+            <img src="{{ .Electrolyte.Image }}" alt="{{ .Electrolyte.Name }}" class="item-icon">
+            <span>{{ .Electrolyte.Name }}</span>
+            <span>{{ .Electrolyte.Concentration }}</span>
+            <span>{{ .Electrolyte.Ions }}</span>
+            <span><input type="number" class="m-field" value="{{ .Volume }}" readonly></span>
+            
+        </div>
+        {{ else }}
+        <p>В заявке нет растворов</p>
+        {{ end }}
+    </div>
+</body>
+</html>
