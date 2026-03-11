@@ -16,7 +16,7 @@ func main() {
 	// Маршруты
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/electrolyte/", electrolyteHandler)
-	http.HandleFunc("/calculation/", calculationHandler)
+	http.HandleFunc("/concentration/", concentrationHandler)
 
 	log.Println("Сервер запущен на http://localhost:3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
@@ -47,8 +47,8 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	pageData := PageData{
 		Electrolytes: filtered,
 		Search:       search,
-		CartCount:    len(data.CurrentCalculation.Items),
-		CalcID:       data.CurrentCalculation.ID,
+		CartCount:    len(data.CurrentConcentration.Items),
+		CalcID:       data.CurrentConcentration.ID,
 	}
 
 	// Парсим и выполняем шаблон
@@ -89,29 +89,29 @@ func electrolyteHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // Обработчик страницы расчёта (заявки)
-func calculationHandler(w http.ResponseWriter, r *http.Request) {
-	// Извлекаем ID, например /calculation/1
-	idStr := strings.TrimPrefix(r.URL.Path, "/calculation/")
+func concentrationHandler(w http.ResponseWriter, r *http.Request) {
+	// Извлекаем ID, например /concentration/1
+	idStr := strings.TrimPrefix(r.URL.Path, "/concentration/")
 	id, err := strconv.Atoi(idStr)
-	if err != nil || id != data.CurrentCalculation.ID {
+	if err != nil || id != data.CurrentConcentration.ID {
 		http.NotFound(w, r)
 		return
 	}
 
 	// Для каждого элемента подставляем полные данные раствора
 	type ItemWithDetails struct {
-		data.CalculationItem
+		data.ConcentrationItem
 		Name         string
 		Concentration float64
 		Ions         string
 		Image        string
 	}
 	var items []ItemWithDetails
-	for _, item := range data.CurrentCalculation.Items {
+	for _, item := range data.CurrentConcentration.Items {
 		for _, e := range data.Electrolytes {
 			if e.ID == item.ElectrolyteID {
 				items = append(items, ItemWithDetails{
-					CalculationItem: item,
+					ConcentrationItem: item,
 					Name:            e.Name,
 					Concentration:   e.Concentration,
 					Ions:            e.Ions,
@@ -124,15 +124,15 @@ func calculationHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Структура для передачи в шаблон
 	type PageData struct {
-		Calculation data.Calculation
+		Concentration data.Concentration
 		Items       []ItemWithDetails
 	}
 	pageData := PageData{
-		Calculation: data.CurrentCalculation,
+		Concentration: data.CurrentConcentration,
 		Items:       items,
 	}
 
-	tmpl := template.Must(template.ParseFiles("templates/calculation.html"))
+	tmpl := template.Must(template.ParseFiles("templates/concentration.html"))
 	err = tmpl.Execute(w, pageData)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

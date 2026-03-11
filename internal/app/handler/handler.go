@@ -20,9 +20,9 @@ func (h *Handler) RegisterRoutes(router *gin.Engine) {
 
 	router.GET("/", h.GetElectrolytes)
 	router.GET("/electrolyte/:id", h.GetElectrolyte)
-	router.GET("/calculation/:id", h.GetCalculation)
-	router.POST("/add-to-calculation", h.AddToCalculation)
-	router.POST("/delete-calculation", h.DeleteCalculation)
+	router.GET("/concentration/:id", h.GetConcentration)
+	router.POST("/add-to-concentration", h.AddToConcentration)
+	router.POST("/delete-concentration", h.DeleteConcentration)
 }
 
 func (h *Handler) errorJSON(c *gin.Context, code int, err error) {

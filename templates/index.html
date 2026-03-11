@@ -7,7 +7,10 @@
 </head>
 <body>
     <header>
-        <a href="/" class="home-btn">🏠 Домой</a>
+        <a href="/" class="home-btn"><svg width="32" height="32" fill="#232B46" viewBox="0 0 16 16">
+  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+  <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+</svg></a>
     </header>
 
     <div class="search-cart">
@@ -16,11 +19,17 @@
             <button type="submit" class="search-btn">Найти</button>
         </form>
         {{ if gt .cart_count 0 }}
-        <a href="/calculation/{{ .draft_id }}" class="cart-icon">
-            🛒 <span class="cart-count">{{ .cart_count }}</span>
+        <a href="/concentration/{{ .draft_id }}" class="cart-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet-half" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+</svg> <span class="cart-count">{{ .cart_count }}</span>
         </a>
         {{ else }}
-        <span class="cart-icon inactive">🛒</span>
+        <span class="cart-icon inactive"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet-half" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+</svg></span>
         {{ end }}
     </div>
 
@@ -36,7 +45,7 @@
                     <p>Концентрация: {{ .Concentration }} М</p>
                     <p class="ions">Ионы: {{ .Ions }}</p>
                     <!-- Форма добавления в заявку -->
-                    <form action="/add-to-calculation" method="POST" class="add-form">
+                    <form action="/add-to-concentration" method="POST" class="add-form">
                         <input type="hidden" name="electrolyte_id" value="{{ .ID }}">
                         <input type="number" name="volume" placeholder="Объём (мл)" required min="1">
                         <button type="submit" class="btn">Добавить</button>

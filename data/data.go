@@ -12,19 +12,19 @@ type Electrolyte struct {
 	Video        string // ссылка на видео в Minio
 }
 
-// CalculationItem - элемент расчёта (выбранный раствор с объёмом и комментарием)
-type CalculationItem struct {
+// ConcentrationItem - элемент расчёта (выбранный раствор с объёмом и комментарием)
+type ConcentrationItem struct {
 	ElectrolyteID int
 	Volume        int
 }
 
-// Calculation - текущий расчёт (заявка)
-type Calculation struct {
+// Concentration - текущий расчёт (заявка)
+type Concentration struct {
 	ID          int
 	Date        string
 	Description string
 	Result      string
-	Items       []CalculationItem
+	Items       []ConcentrationItem
 }
 
 // Исходные данные (вместо БД)
@@ -71,13 +71,13 @@ var Electrolytes = []Electrolyte{
 	},
 }
 
-// CurrentCalculation - пример текущего расчёта
-var CurrentCalculation = Calculation{
+// CurrentConcentration - пример текущего расчёта
+var CurrentConcentration = Concentration{
 	ID:          1,
 	Date:        "2026-02-25",
 	Description: "Смешивание соляной кислоты и гидроксида натрия",
 	Result:      "[H⁺] = 0.045 моль/л, pH = 1.35",
-	Items: []CalculationItem{
+	Items: []ConcentrationItem{
 		{ElectrolyteID: 1, Volume: 50},
 		{ElectrolyteID: 2, Volume: 30},
 	},

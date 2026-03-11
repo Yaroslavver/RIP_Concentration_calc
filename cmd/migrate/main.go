@@ -20,8 +20,8 @@ func main() {
 	err = db.AutoMigrate(
 		&ds.User{},
 		&ds.Electrolyte{},
-		&ds.Calculation{},
-		&ds.CalculationItem{},
+		&ds.Concentration{},
+		&ds.ConcentrationItem{},
 	)
 	if err != nil {
 		log.Fatal("failed to migrate:", err)
