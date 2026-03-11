@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Name }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-btn"><svg width="32" height="32" fill="#232B46" viewBox="0 0 16 16">
+  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+  <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+</svg></a>
+    </header>
+
+    <div class="vibe-container">
+        <div class="vibe-video-wrapper">
+            <video autoplay loop muted playsinline class="vibe-video">
+                <source src="{{ .Video }}" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            <div class="vibe-overlay"></div>
+        </div>
+
+        <div class="vibe-content">
+            <h1 class="vibe-title">{{ .Name }}</h1>
+            <div class="vibe-details">
+                <div class="vibe-card">
+                    <span class="vibe-label">Концентрация</span>
+                    <span class="vibe-value">{{ .Concentration }} моль/л</span>
+                </div>
+                <div class="vibe-card">
+                    <span class="vibe-label">pH</span>
+                    <span class="vibe-value">≈ {{ .PH }}</span>
+                </div>
+                <div class="vibe-card">
+                    <span class="vibe-label">Ионы</span>
+                    <span class="vibe-value">{{ .Ions }}</span>
+                </div>
+            </div>
+            <div class="vibe-description">
+                <p><strong>Описание:</strong> {{ .Description }}</p>
+                <p><strong>Формула диссоциации:</strong> {{ .Name }} → {{ .Ions }}</p>
+            </div>
+
+            <form action="/add-to-concentration" method="POST" class="add-form">
+                <input type="hidden" name="electrolyte_id" value="{{ .ID }}">
+                <input type="number" name="volume" placeholder="Объём (мл)" required min="1">
+                <button type="submit" class="btn">Добавить в расчёт</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

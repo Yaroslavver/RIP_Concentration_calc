@@ -1,0 +1,477 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+    line-height: 1.6;
+}
+
+h1{
+    color: #232B46;
+}
+h3 {
+    color:#000;
+}
+.btn{    background: #232B46;
+    color: #fff;
+    padding: 5px 10px;
+    display: block;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+header a.home-btn {
+    text-decoration: none;
+    color: #232B46;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.search-box {
+    width: 300px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+/* Карточки услуг */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+a{text-decoration: none;}
+
+.card {
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 16px;
+}
+
+.card h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.card p {
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.card .price {
+    font-weight: bold;
+    color: #232B46;
+}
+
+/* Текущая заявка */
+.request-card {
+    background-color: #f9f9f9;
+    border: 2px dashed #232B46;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+.request-card h2 {
+    margin-bottom: 12px;
+    color: #232B46;
+}
+
+.item-icon{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.calc-info{
+    background: #232B46;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-block: 10px;
+}
+
+.calc-head, .calc-card {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+}
+.calc-head{
+    border: solid 2px #232B46;
+    color: #000000;
+    padding: 15px;
+    border-radius: 8px;
+    margin-block: 10px;
+    font-weight: bold;
+}
+.calc-card{
+    background-color: #f9f9f9;
+    border: 1px solid #eeeeee;
+    color: #000000;
+    padding: 15px;
+    border-radius: 8px;
+    margin-block: 10px;
+}
+
+
+
+/* Детальная страница */
+.detail-page img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.detail-page video {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
+.solution-info p {
+    margin-bottom: 12px;
+}
+
+
+.m-field {
+    width: 120px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.ions {
+    background: #232B46;
+    color: white !important;
+    padding: 5px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+/* Поиск и корзина под хедером */
+.search-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 16px auto;
+    padding: 0 16px;
+}
+.search-form {
+    display: flex;
+    flex: 1;
+    margin-right: 16px;
+}
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #eeeeee;
+    border-radius: 8px 0 0 8px;
+}
+.search-btn {
+    padding: 8px 16px;
+    background: #232B46;
+    color: #fff;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+.cart-icon {
+    background: #232B46;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.cart-count {
+    background: #fff;
+    color: #232B46;
+    border-radius: 5px;
+    padding: 2px 6px;
+    margin-left: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* Vibes стиль для детальной страницы */
+.vibe-container {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 570px;
+    place-self: center;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    overflow: auto;
+    min-height: 100vh;
+}
+
+.vibe-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.vibe-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vibe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(200deg, #232b46b3 0%, #ffffff80 100%);
+    z-index: 2;
+}
+
+.vibe-content {
+    position: relative;
+    z-index: 3;
+    color: white;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.vibe-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    color: white;
+}
+
+.vibe-details {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.vibe-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.vibe-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.vibe-label {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.vibe-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.vibe-description {
+    background: #232b46b3;
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.vibe-description p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+/* предыдущие стили остаются, добавить: */
+
+.search-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 16px auto;
+    padding: 0 16px;
+}
+.search-form {
+    display: flex;
+    flex: 1;
+    margin-right: 16px;
+}
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+.search-btn {
+    padding: 8px 16px;
+    background: #232B46;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+.cart-icon {
+    background: #232B46;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.cart-icon.inactive {
+    background: #aaa;
+    cursor: default;
+}
+.cart-count {
+    background: #fff;
+    color: #232B46;
+    border-radius: 50%;
+    padding: 2px 6px;
+    margin-left: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.add-form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.add-form input, .add-form button {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.add-form button {
+    background: #232B46;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.calc-info-card {
+    background: #232B46;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.calc-header-row, .calc-item-card {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 50px;
+    gap: 10px;
+    align-items: center;
+    padding: 12px;
+}
+.calc-header-row {
+    background: #f0f0f0;
+    border: 2px solid #232B46;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+.calc-item-card {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-top: none;
+}
+.item-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.delete-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
