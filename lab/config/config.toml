@@ -1,0 +1,15 @@
+ServiceHost = "0.0.0.0"
+ServicePort = 8080
+
+[JWT]
+SigningMethod = "HS256"
+ExpiresIn = 3600000000000  # 1 час в наносекундах (можно настроить)
+TokenSecret = "your-secret-key-change-in-production"
+
+[Redis]
+Host = "localhost"
+Port = 6379
+Password = ""
+DB = 0
+DialTimeout = "10s"
+ReadTimeout = "10s"
